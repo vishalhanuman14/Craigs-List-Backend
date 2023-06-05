@@ -35,6 +35,7 @@ app.post(API_PREFIX + "/user", async (req, res) => {
 
 app.put(API_PREFIX + "/user", async (req, res) => {
   try {
+    console.log(req.body)
     await updateUserById(req.body);
     res.status(204);
   } catch (error) {
@@ -168,7 +169,7 @@ app.put(API_PREFIX +'/feedbacks', async (req, res) => {
 
 app.listen(3001, () => {
   console.log("Booting on 3001");
-  mongoose.connect("mongodb://localhost:27017/nfthing").catch((e) => {
+  mongoose.connect("mongodb://127.0.0.1:27017").catch((e) => {
     console.log(e);
   });
 });

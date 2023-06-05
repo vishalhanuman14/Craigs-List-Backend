@@ -21,6 +21,7 @@ export const createNewUser = async(body) => {
 
 export const updateUserById = async(body) => {
     const { updateObj, updateUserId } = body;
+    console.log(body)
     try{
         let user = await User.exists({nfthingId: updateUserId});
         if(user === null){
