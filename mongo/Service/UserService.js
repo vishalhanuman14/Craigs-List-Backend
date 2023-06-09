@@ -6,17 +6,26 @@ import _ from "lodash";
 
 export const createNewUser = async(body) => {
     
-    const { firstName, lastName, address, phone, tokenId } = body;
-
+    const { firstName, lastName, address, phone, email, tokenId } = body;
+    if(email!=null){
+        let user = await User.findOne({email:email})
+        console.log("🚀 ~ file: UserService.js:12 ~ createNewUser ~ user:", user)
+        if(user!=undefined|| user!=null){
+            console.log("exists")
+            return user.nfthingId
+        }
+    }
     const user = new User({
         nfthingId: makeWalletAddress(),
         firstName: firstName, 
         lastName: lastName,
         address: address,
-        phone: phone,
+        email: email,
     })
 
     await user.save();
+    console.log(user.nfthingId)
+    return user.nfthingId
 }
 
 export const updateUserById = async(body) => {

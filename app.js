@@ -29,8 +29,8 @@ app.get(API_PREFIX + "/user", async (req, res) => {
 });
 
 app.post(API_PREFIX + "/user", async (req, res) => {
-  createNewUser(req.body).catch((e) => console.log(e));
-  res.send("Created!").status(201);
+  var nfthingId= await createNewUser(req.body).catch((e) => console.log(e));
+  res.send({"nfthingId":nfthingId, message:"created"}).status(201);
 });
 
 app.put(API_PREFIX + "/user", async (req, res) => {
