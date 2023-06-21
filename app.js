@@ -47,8 +47,8 @@ app.put(API_PREFIX + "/user", async (req, res) => {
 app.post(API_PREFIX + "/orders", async (req, res) => {
   try {
     const { body } = req;
-    await createNewOrder(body);
-    res.status(201).json({ message: "Order created successfully" });
+    const orderId=await createNewOrder(body);
+    res.status(201).json({ message: "Order created successfully", orderId:orderId });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to create the order" });

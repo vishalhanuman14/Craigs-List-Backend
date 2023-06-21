@@ -25,6 +25,7 @@ export const createNewOrder = async (body) => {
   });
 
   await order.save();
+  return order.orderNfthingId
 };
 
 export const updateOrderById = async (body) => {
